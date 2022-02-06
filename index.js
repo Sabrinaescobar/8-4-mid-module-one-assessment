@@ -26,7 +26,13 @@ const animals = [
  * getTotalCount(animals); //> 28
  * getTotalCount([]); //> 0 // returns 0 if the input array is empty
  */
-function getTotalCount(animals) {}
+function getTotalCount(animals) {
+  let totalAnimals = 0;
+  for (let i = 0; i < animals.length; i++) {
+    totalAnimals = totalAnimals + animals[i].count;
+  }
+  return totalAnimals;
+}
 
 /**
  * FUNCTION DESCRIPTION
@@ -40,7 +46,14 @@ function getTotalCount(animals) {}
  * getAllKinds(animals); //> ["Pig", "Cow", "Chicken", "Horse", "Dog", "Cat"]
  * getAllKinds([]); //> [] // returns empty array if input array is empty
  */
-function getAllKinds(animals) {}
+function getAllKinds(animals) {
+  let kindOfAnimals = [];
+
+  for (let animal in animals) {
+   kindOfAnimals.push(animals[animal].kind);
+  }
+  return kindOfAnimals;
+}
 
 /**
  * FUNCTION DESCRIPTION
@@ -59,7 +72,21 @@ function getAllKinds(animals) {}
   ];
  * filterByCountMinimum([], 3); //> [] // returns empty array if input array is empty
  */
-function filterByCountMinimum(animals, minimum) {}
+function filterByCountMinimum(animals, minimum) {
+  let filterAnimals = [];
+  
+  if (animals.length === 0) {
+    return filterAnimals;
+  } else {
+  for (let animal in animals) {
+     if (animals[animal].count >= minimum) {
+      filterAnimals.push(animals[animal]);
+     }
+     
+  }
+  return filterAnimals;
+}
+}
 
 /**
  * FUNCTION DESCRIPTION
@@ -73,7 +100,21 @@ function filterByCountMinimum(animals, minimum) {}
  * getMostCommonAnimal(animals); //> { kind: "Chicken", count: 11 }
  * getMostCommonAnimal([]); //> null // returns null if the input is empty
  */
-function getMostCommonAnimal(animals) {}
+function getMostCommonAnimal(animals) {
+  if (animals.length === 0) {
+    return null;
+  } else {
+  let animalWithTheHighestCount = [];
+  let highestCount = animals[0].count;
+  for (let i = 0; i < animals.length; i++) {
+    if (animals[i].count > highestCount) {
+      highestCount = animals[i].count;
+      animalWithTheHighestCount = animals[i]; 
+    }
+  }
+  return animalWithTheHighestCount;
+}
+}
 
 // Do not change anything below this line.
 module.exports = {
